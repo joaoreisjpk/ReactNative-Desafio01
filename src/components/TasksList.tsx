@@ -7,7 +7,7 @@ import { ItemWrapper } from './ItemWrapper';
 import trashIcon from '../assets/icons/trash/trash.png'
 
 export interface Task {
-  id: number;
+  id: () => number | number;
   title: string;
   done: boolean;
 }
@@ -21,7 +21,7 @@ interface TasksListProps {
 export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps) {
   return (
     <FlatList
-      // data={tasks}
+      data={tasks}
       keyExtractor={item => String(item.id)}
       contentContainerStyle={{ paddingBottom: 24 }}
       showsVerticalScrollIndicator={false}
